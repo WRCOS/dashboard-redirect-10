@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dynamic ArcGIS Redirect - Last 10 Days, STATUS 1 or 2, Boundaryclass Value Filter</title>
+  <title>Dynamic ArcGIS Redirect - TYPE Filtering</title>
   <script>
     window.onload = function() {
-      // Calculate today minus 10 days
+      // Calculate today minus 10 days (not used in URL below, add if needed)
       var today = new Date();
       today.setDate(today.getDate() - 10);
       var yyyy = today.getFullYear();
@@ -12,19 +12,16 @@
       var dd = String(today.getDate()).padStart(2, '0');
       var dateString = yyyy + '-' + mm + '-' + dd;
 
-      // List values without encoding, comma-separated
-      var filterValues = 'PW - Streets and Highways,PW - Trash Recycling Solid Waste';
-
+      // Construct TYPE filter: comma separated and URL encoded
+      var filterValues = 'PW%20-%20Streets%20and%20Highways,PW%20-%20Trash%20Recycling%20Solid%20Waste';
+      
       var dashboardBase = 'https://srqgis.sarasotafl.gov/portal/apps/dashboards/9155dbab0dca440190b5d0e25eca6b9b';
-      var redirectURL = dashboardBase 
-        + '#CreatedAfter=' + dateString 
-        + '&STATUS=1,2'
-        + '&boundaryclass_value=' + filterValues;
+      var redirectURL = dashboardBase + '#TYPE=' + filterValues;
       window.location.replace(redirectURL);
     };
   </script>
 </head>
 <body>
-  Redirecting to filtered assignments...
+  Redirecting by TYPE parameter...
 </body>
 </html>
