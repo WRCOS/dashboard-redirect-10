@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dynamic ArcGIS Redirect - PW Last 10 Days, STATUS 1 or 2, Assignment Type Value Filter</title>
+  <title>Dynamic ArcGIS Redirect - Last 10 Days, STATUS 1 or 2, Boundaryclass Value Filter</title>
   <script>
     window.onload = function() {
       // Calculate today minus 10 days
@@ -12,11 +12,8 @@
       var dd = String(today.getDate()).padStart(2, '0');
       var dateString = yyyy + '-' + mm + '-' + dd;
 
-      // Encode values for URL
-      var filterValues = [
-        'PW - Streets and Highways',
-        'PW - Trash Recycling Solid Waste'
-      ].map(encodeURIComponent).join(',');
+      // List values without encoding, comma-separated
+      var filterValues = 'PW - Streets and Highways,PW - Trash Recycling Solid Waste';
 
       var dashboardBase = 'https://srqgis.sarasotafl.gov/portal/apps/dashboards/9155dbab0dca440190b5d0e25eca6b9b';
       var redirectURL = dashboardBase 
@@ -31,4 +28,3 @@
   Redirecting to filtered assignments...
 </body>
 </html>
-
