@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic ArcGIS Redirect - PW Last 10 Days, STATUS 1 or 2, Assignment Type Value Filter</title>
+  <script>
+    window.onload = function() {
+      // Calculate today minus 10 days
+      var today = new Date();
+      today.setDate(today.getDate() - 10);
+      var yyyy = today.getFullYear();
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
+      var dd = String(today.getDate()).padStart(2, '0');
+      var dateString = yyyy + '-' + mm + '-' + dd;
+
+      // Encode values for URL
+      var filterValues = [
+        'PW - Streets and Highways',
+        'PW - Trash Recycling Solid Waste'
+      ].map(encodeURIComponent).join(',');
+
+      var dashboardBase = 'https://srqgis.sarasotafl.gov/portal/apps/dashboards/9155dbab0dca440190b5d0e25eca6b9b';
+      var redirectURL = dashboardBase 
+        + '#CreatedAfter=' + dateString 
+        + '&STATUS=1,2'
+        + '&boundaryclass_value=' + filterValues;
+      window.location.replace(redirectURL);
+    };
+  </script>
+</head>
+<body>
+  Redirecting to filtered assignments...
+</body>
+</html>
 
