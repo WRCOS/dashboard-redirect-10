@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dynamic ArcGIS Redirect</title>
+  <title>Dynamic ArcGIS Redirect - Last 10 Days, STATUS 1 or 2</title>
   <script>
     window.onload = function() {
       // Calculate today minus 10 days
@@ -12,14 +12,14 @@
       var mm = String(today.getMonth() + 1).padStart(2, '0');
       var dd = String(today.getDate()).padStart(2, '0');
       var dateString = yyyy + '-' + mm + '-' + dd;
-      // Construct your dashboard URL (replace CreatedDate with your actual parameter)
+      // Build dashboard URL for last 10 days and status 1 or 2
       var dashboardBase = 'https://srqgis.sarasotafl.gov/portal/apps/dashboards/9155dbab0dca440190b5d0e25eca6b9b';
-      var redirectURL = dashboardBase + '#CreatedDate=' + dateString + ',';
+      var redirectURL = dashboardBase + '#last_edited_date=' + dateString + ',&STATUS=1,2';
       window.location.replace(redirectURL);
     };
   </script>
 </head>
 <body>
-  Redirecting to the latest assignments...
+  Redirecting to assignments from last 10 days with STATUS 1 or 2...
 </body>
 </html>
