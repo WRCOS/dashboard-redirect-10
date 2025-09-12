@@ -14,7 +14,7 @@
       var dateString = yyyy + '-' + mm + '-' + dd;
       // Construct dashboard URL with CreatedDate 'before' parameter
       var dashboardBase = 'https://srqgis.sarasotafl.gov/portal/apps/dashboards/9155dbab0dca440190b5d0e25eca6b9b';
-      var redirectURL = dashboardBase + '#CreatedDate=,' + dateString;
+      var redirectURL = dashboardBase + '#CreatedBefore=' + dateString;
       window.location.replace(redirectURL);
     };
   </script>
