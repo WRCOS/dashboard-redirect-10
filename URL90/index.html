@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dynamic ArcGIS Redirect - Older Than 90 Days</title>
+  <title>Dynamic ArcGIS Redirect - CreatedDate Before 90 Days</title>
   <script>
     window.onload = function() {
       // Calculate today minus 90 days
@@ -12,14 +12,14 @@
       var mm = String(today.getMonth() + 1).padStart(2, '0');
       var dd = String(today.getDate()).padStart(2, '0');
       var dateString = yyyy + '-' + mm + '-' + dd;
-      // Construct dashboard URL with correct 'before' parameter
+      // Construct dashboard URL with CreatedDate 'before' parameter
       var dashboardBase = 'https://srqgis.sarasotafl.gov/portal/apps/dashboards/9155dbab0dca440190b5d0e25eca6b9b';
-      var redirectURL = dashboardBase + '#last_edited_date=,' + dateString;
+      var redirectURL = dashboardBase + '#CreatedDate=,' + dateString;
       window.location.replace(redirectURL);
     };
   </script>
 </head>
 <body>
-  Redirecting to assignments older than 90 days...
+  Redirecting to assignments created before 90 days ago...
 </body>
 </html>
