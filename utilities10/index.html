@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic ArcGIS Redirect - Last 10 Days, STATUS 1 or 2, Specific TYPE</title>
+  <script>
+    window.onload = function() {
+      // Calculate today minus 10 days
+      var today = new Date();
+      today.setDate(today.getDate() - 10);
+      var yyyy = today.getFullYear();
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
+      var dd = String(today.getDate()).padStart(2, '0');
+      var dateString = yyyy + '-' + mm + '-' + dd;
 
+      // TYPE values, URL-encoded and comma separated
+      var typeValues = '=Miscellaneous Utilities,Sewer - Back Up,Sewer - Broken Clean Out,Sewer - Broken Sewer Line,Sewer - Cave In,Sewer - Frame and Cover Issue,Sewer - Odor,Sewer - Release,Storm Water,Utilities - Install / Repair Curb,Utilities - Install Sidewalk,Utilities - Sidewalk / Concrete Repair,Water - Adjust Meter Box,Water - Backflow Leak,Water - Blue New Account Turn On,Water - Datalog Meter,Water - Fire Hydrant Issue,Water - Flow Water Meter,Water - Flush Water Meter,Water - Good Account - No Water,Water - Leak,Water - Locate Meter,Water - Lock Meter,Water - Low Water Pressure,Water - Main Break,Water - Meter Box Issue,Water - Meter Issue,Water - Meter Leak,Water - Meter Lid Issue,Water - Open Fixture Non Pay Turn On,Water - Plug Meter,Water - Remove Direct Connection,Water - Replace Valve & Leave Water Off,Water - Replace Valve & Leave Water On,Water - Replace Valve & Lock Meter,Water - Replace Valve & Plug Meter,Water - Reset Water Meter,Water - Standing Water,Water - Street Leak,Water - Turn off Water,Water - Turn on Water,Water – No water at property';
+      // STATUS values
+      var statusValues = '1,2';
+
+      var dashboardBase = 'https://srqgis.sarasotafl.gov/portal/apps/dashboards/9155dbab0dca440190b5d0e25eca6b9b';
+      var redirectURL = dashboardBase 
+        + '#CreatedAfter=' + dateString
+        + '&STATUS=' + statusValues
+        + '&TYPE=' + typeValues;
+      
+      window.location.replace(redirectURL);
+    };
+  </script>
+</head>
+<body>
+  Redirecting to filtered assignments...
+</body>
+</html>
